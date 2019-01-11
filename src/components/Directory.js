@@ -114,7 +114,17 @@ class Directory extends Component {
           notes: '',
           currentlyEditingID: -1,
           editListing: {},
-          newListing: {},
+          newListing: {
+            Name: '',
+            Category: '',
+            Address: '',
+            Address2: '',
+            City: '',
+            Postal: '',
+            Phone: '',
+            Website: '',
+            Facebook: '',
+          },
         });
       } else throw res;
     })
