@@ -6,15 +6,15 @@ function TableHeader(props) {
   return (
     <thead>
       <tr className="TableHeader">
-        <th>Name</th>
-        <th>Category</th>
-        <th>Address</th>
-        <th>Address2</th>
-        <th>City</th>
-        <th>Postal</th>
-        <th>Phone</th>
-        <th>Website</th>
-        <th>Facebook</th>
+        <th scope="col">Name</th>
+        <th scope="col">Category</th>
+        <th scope="col">Address</th>
+        <th scope="col">Address2</th>
+        <th scope="col">City</th>
+        <th scope="col">Postal</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Website</th>
+        <th scope="col">Facebook</th>
       </tr>
       <tr className="TableFilter">
         <th>

@@ -3,7 +3,9 @@ import TableRow from './TableRow';
 import TableHeader from './TableHeader';
 import TableRowEdit from './TableRowEdit';
 import Pagination from './Pagination';
-import { DIRECTORYURL, PAGESIZE } from '../constants';
+import SubmitForm from './SubmitForm';
+import { DIRECTORYURL, PAGESIZE, SUBMIT_CHANGE } from '../constants';
+const Modal = require('react-modal');
 
 class Directory extends Component {
   constructor(props) {
@@ -25,13 +27,20 @@ class Directory extends Component {
       currentlyEditingID: -1,
       editListing: {},
       filterText: '',
-      filterCategory: 0,
+      filterCategory: 14,
       page: 0,
       uniqueCategories: [],
+      modalIsOpen: false,
+      requesterName: '',
+      requesterEmail: '',
+      notes: '',
+      textModalOpen: false,
+      modalText: '',
     }
   }
 
   componentDidMount() {
+    Modal.setAppElement('body');
     this.getData();
   }
 
@@ -59,7 +68,87 @@ class Directory extends Component {
   }
 
   submitButtonClick = (id) => {
-    // todo: validate stuff, submit changes, clear new item, give some sorta notice.
+    this.setState({
+      modalIsOpen: true,
+    });
+  }
+
+  submitInfo = () => {
+    const item = (this.state.currentlyEditingID === -1 ? this.state.newListing : this.state.editListing)
+    if (!item.Name) {
+      this.setState({
+        textModalOpen: true,
+        modalText: 'Business Name is required',
+        modalIsOpen: false,
+      });
+      return;
+    }
+    fetch(SUBMIT_CHANGE, {
+      method: 'post',
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: item.Name,
+        category: item.Category,
+        address: item.Address,
+        address2: item.Address2,
+        city: item.City,
+        postal: item.Postal,
+        phone: item.Phone,
+        website: item.Website,
+        facebook: item.Facebook,
+        notes: this.state.notes,
+        record: this.state.currentlyEditingID,
+        requestername: this.state.requesterName,
+        requesteremail: this.state.requesterEmail,
+      })
+    })
+    .then((res) => res.json())
+    .then((res) => {
+      if (res.row) {
+        this.setState({
+          modalText: 'Your change has been submitted for review. Thank you.',
+          textModalOpen: true,
+          modalIsOpen: false,
+          notes: '',
+          currentlyEditingID: -1,
+          editListing: {},
+          newListing: {},
+        });
+      } else throw res;
+    })
+    .catch((err) => {
+      this.setState({
+        modalText: 'Error submitting change',
+        textModalOpen: true,
+      });
+    });
+  }
+
+  closeModal = () => {
+    this.setState({
+      modalIsOpen: false,
+      textModalOpen: false,
+    });
+  }
+
+  changeSubmitForm = (field, value) => {
+    if (field === 'requesterName') {
+      this.setState({
+        requesterName: value,
+      });
+    }
+    if (field === 'requesterEmail') {
+      this.setState({
+        requesterEmail: value,
+      });
+    }
+    if (field === 'notes') {
+      this.setState({
+        notes: value,
+      });
+    }
   }
 
   changeInput = (id, key, value) => {
@@ -132,6 +221,18 @@ class Directory extends Component {
             </tbody>
           </table>
           <Pagination totalResults={filteredResults.length} currentPage={this.state.page} changePage={this.changePage} />
+          <Modal
+            isOpen={this.state.modalIsOpen}
+            onRequestClose={this.closeModal}
+            contentLabel="form">
+            <SubmitForm submitInfo={this.submitInfo} changeSubmitForm={this.changeSubmitForm} notes={this.state.notes} requesterName={this.state.requesterName} requesterEmail={this.state.requesterEmail} />
+          </Modal>
+          <Modal
+            isOpen={this.state.textModalOpen}
+            onRequestClose={this.closeModal}
+            contentLabel="message">
+              <div className="modalText">{this.state.modalText}</div>
+          </Modal>
         </div>
       );
     } else {

@@ -4,7 +4,7 @@ import TableCellButton from './TableCellButton';
 
 function TableRowEdit(props) {
   function changeInput(key, value) {
-    props.changeInput(props.listing.ID, key, value);
+    props.changeInput(props.listing.ID || null, key, value);
   }
   
   return (
