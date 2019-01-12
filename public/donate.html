@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-20581965-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-20581965-2');
+    </script>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/index.css" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Guide to vegan eating in Kitchener Waterloo Cambridge and Guelph Ontario">
+    <meta name="keywords" content="vegan,vegetarian,restaurants,kitchener,waterloo,cambridge,guelph,bakeries,restaurants,markets,health,catering,delivery">
+    <meta name="author" content="Andrew Aaron">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="manifest" href="/manifest.json" />
+    <title>Veg Guide - Cambridge Guelph Kitchener Waterloo - Donate</title>
+  </head>
+  <body>
+  <header>
+      <div class="header-inner">
+        <a href="/" aria-label="Home"><img src="/logo.png" alt="Veg Guide Logo" class="logo" /></a>
+        <nav>
+          <ul>
+            <li>
+              <a href="/">Home</a>
+            </li>
+            <li>
+              <a href="/directory.html">Directory</a>
+            </li>
+            <li>
+              <a href="/donate.html">Donate</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <section>
+        <div class="section-inner">
+          <h2>Donate</h2>
+          <div>
+            <p>Since this is a new project, we currently do not have any revenue from advertising. In the future this may change. If the first 1000 copies all get distributed, I will need $ to print more.</p>
+            <p>So far, the expenses have been:</p>
+            <ul>
+              <li>Domain Name for 2 years (cgkwvegguide.com): <strong>$23.48</strong></li>
+              <li>Printing of 1000 copies: <strong>$464.65</strong></li>
+            </ul>
+            <p>You can donate below with PayPal. Any donation amount is appreciated.</p>
+            <div id="aadon1">
+              <form action="https://www.paypal.com/cgi-bin/webscr" method="post" id="form1" target="_blank">
+                <input type="hidden" name="business" value="andrew_louie@hotmail.com">
+  
+                <!-- Specify a Donate button. -->
+                <input type="hidden" name="cmd" value="_donations">
+  
+                <!-- Specify details about the contribution -->
+                <input type="hidden" name="item_name" value="Veg Guide">
+                <input type="hidden" name="item_number" value="General">
+                <br>
+                <label><strong>Amount:</strong></label>
+                <label>
+                  <input type="radio" name="aamount" value="10.00" id="aamount_0">
+                  $10
+                </label>
+                <br>
+                <label role="presentation"></label>
+                <label style="width:300px;max-width: 60%;">
+                  <input type="radio" name="aamount" value="25.00" id="aamount_5" checked>
+                  $25
+                </label>
+                <br>
+                <label role="presentation"></label>
+                <label>
+                  <input type="radio" name="aamount" value="50.00" id="aamount_1">
+                  $50
+                </label>
+                <br>
+                <label role="presentation"></label>
+                <label>
+                  <input type="radio" name="aamount" value="75.00" id="aamount_2">
+                  $75
+                </label>
+                <br>
+                <label role="presentation"></label>
+                <label>
+                  <input type="radio" name="aamount" value="100.00" id="aamount_3">
+                  $100
+                </label>
+                <br>
+                <label role="presentation"></label>
+                <label><input type="radio" name="aamount" value="other" id="aamount_4"> Other</label>
+                <label role="presentation"></label>
+                <div class="input-group" style="margin-left:80px;margin-top:3px;"><span class="input-group-addon">$</span><input type="number" name="aaother" id="other" class="form-control" value="15.00" step="0.01"></div>
+                <br>
+                <br>
+                <input type="hidden" name="amount" id="form1amt" value="25.00">
+                <input type="hidden" name="currency_code" value="CAD">
+                <input type="hidden" name="no_note" value="1">
+  
+                <!-- Display the payment button. -->
+                <label role="presentation"></label>
+                <input type="image" name="submit" border="0" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" alt="PayPal - The safer, easier way to pay online">
+                <img alt="" border="0" width="1" height="1" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+      <script>
+        document.getElementById('form1').addEventListener('submit', function() {
+          amt = document.querySelectorAll('input[name="aamount"]:checked')[0].value;
+          if (amt == 'other') amt = document.getElementById('other').value;
+          document.getElementById('form1amt').setAttribute('value', amt);
+
+        });
+        document.getElementById('other').addEventListener('change',function() {
+          document.getElementById('aamount_4').setAttribute('checked', true);
+        });
+      </script>
+    </main>
+  </body>
+</html>
