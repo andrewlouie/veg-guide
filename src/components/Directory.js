@@ -5,6 +5,9 @@ import TableRowEdit from './TableRowEdit';
 import Pagination from './Pagination';
 import SubmitForm from './SubmitForm';
 import { DIRECTORYURL, PAGESIZE, SUBMIT_CHANGE } from '../constants';
+import Spinner from 'react-spinner-material';
+import SearchBox from './SearchBox';
+import FilterDropDown from './FilterDropDown';
 const Modal = require('react-modal');
 
 class Directory extends Component {
@@ -27,7 +30,7 @@ class Directory extends Component {
       currentlyEditingID: -1,
       editListing: {},
       filterText: '',
-      filterCategory: 14,
+      filterCategory: 11,
       page: 0,
       uniqueCategories: [],
       modalIsOpen: false,
@@ -214,41 +217,68 @@ class Directory extends Component {
       }
       return (
         <div>
-          <table className="Directory">
-            <TableHeader filterText={this.state.filterText} searchBoxChange={this.searchBoxChange} uniqueCategories={this.state.uniqueCategories} filterCategory={this.state.filterCategory} selectCategory={this.selectCategory} />
-            <tbody>
-              {filteredResults.slice(this.state.page * PAGESIZE, (this.state.page * PAGESIZE) + PAGESIZE).map((listing) => {
-                if (listing.ID === this.state.currentlyEditingID) {
+          <SearchBox value={this.state.filterText} onChange={this.searchBoxChange} />
+          <FilterDropDown options={this.state.uniqueCategories} value={this.state.filterCategory} onChange={this.selectCategory} />
+          <div className="tableScroll">
+            <table className="Directory" style={{width: '100%', tableLayout: 'fixed'}}>
+              <TableHeader />
+              <tbody>
+                {filteredResults.slice(this.state.page * PAGESIZE, (this.state.page * PAGESIZE) + PAGESIZE).map((listing) => {
+                  if (listing.ID === this.state.currentlyEditingID) {
+                    return (
+                      <TableRowEdit key={listing.ID} listing={this.state.editListing} editButtonClick={this.editButtonClick} submitButtonClick={this.submitButtonClick} changeInput={this.changeInput} />
+                    );  
+                  }
                   return (
-                    <TableRowEdit key={listing.ID} listing={this.state.editListing} editButtonClick={this.editButtonClick} submitButtonClick={this.submitButtonClick} changeInput={this.changeInput} />
-                  );  
-                }
-                return (
-                  <TableRow key={listing.ID} listing={listing} editButtonClick={this.editButtonClick} />
-                );
-              })}
-              <TableRowEdit listing={this.state.newListing} editButtonClick={this.editButtonClick} submitButtonClick={this.submitButtonClick} changeInput={this.changeInput} />
-            </tbody>
-          </table>
+                    <TableRow key={listing.ID} listing={listing} editButtonClick={this.editButtonClick} />
+                  );
+                })}
+                <tr className="addNewLabelRow">
+                  <td className="addNewLabel">Add New Item</td>
+                </tr>
+                <TableRowEdit listing={this.state.newListing} editButtonClick={this.editButtonClick} submitButtonClick={this.submitButtonClick} changeInput={this.changeInput} />
+              </tbody>
+            </table>
+          </div>
           <Pagination totalResults={filteredResults.length} currentPage={this.state.page} changePage={this.changePage} />
           <Modal
+            style={{
+              content: {
+                top: '32%',
+                left: '30%',
+                bottom: '32%',
+                right: '30%',
+              },
+            }}
             isOpen={this.state.modalIsOpen}
             onRequestClose={this.closeModal}
             contentLabel="form">
             <SubmitForm submitInfo={this.submitInfo} changeSubmitForm={this.changeSubmitForm} notes={this.state.notes} requesterName={this.state.requesterName} requesterEmail={this.state.requesterEmail} />
           </Modal>
           <Modal
+            style={{
+              content: {
+                top: '32%',
+                left: '30%',
+                bottom: '32%',
+                right: '30%',
+              },
+            }}
             isOpen={this.state.textModalOpen}
             onRequestClose={this.closeModal}
             contentLabel="message">
-              <div className="modalText">{this.state.modalText}</div>
+              <div className="modalText">
+                <div className="modalText-inner">
+                  {this.state.modalText}
+                </div>
+              </div>
           </Modal>
         </div>
       );
     } else {
       return (
-        <div className="Spinner">
-          Pretty spinner
+        <div className="Spinner" style={{textAlgin: 'center'}}>
+           <Spinner size={120} spinnerColor={"#529d38"} spinnerWidth={2} visible={true} />
         </div>
       )
     }

@@ -2,7 +2,10 @@ import React from 'react';
 
 function SearchBox(props) {
   return (
-    <input type="search" value={props.value} onChange={props.onChange} />
+    <div className="SearchBox">
+      <label className="bigLabel" htmlFor="searchBox">Filter By Name</label>
+      <input type="search" id="searchBox" value={props.value} onChange={props.onChange} />
+    </div>
   )
 }
 

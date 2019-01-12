@@ -11,7 +11,7 @@ function Pagination(props) {
           buttonNumbers.map((page) => {
             if ((page + 1) * PAGESIZE < props.totalResults + PAGESIZE) {
               return (
-                <button key={page} onClick={() => props.changePage(page) }>{page + 1}</button>
+                <button aria-label={`Go to page ${page + 1}`} className={`paginationButton${props.currentPage === page ? ' active' : ''}`} key={page} onClick={() => props.changePage(page) }>{page + 1}</button>
               )
             }
             return null;

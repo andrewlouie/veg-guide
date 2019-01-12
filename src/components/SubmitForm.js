@@ -15,7 +15,7 @@ function SubmitForm(props) {
         Notes (anything else we should know)
       </label>
       <input id="notes" type="text" onChange={(evt) => props.changeSubmitForm('notes', evt.target.value)} value={props.notes} />
-      <button onClick={props.submitInfo}>Send</button>
+      <div className="submitButtonContainer"><button onClick={props.submitInfo} className="submitButton">Send</button></div>
     </div>
   )
 }

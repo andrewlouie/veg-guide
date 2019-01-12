@@ -188,3 +188,238 @@ input[type="number"] {
     text-align: center;
   }
 }
+
+.spinner {
+  margin: 10px auto;
+}
+
+td:not(:first-child) {
+  text-align:center;
+}
+
+th:first-child {
+  text-align: left;
+}
+
+.App input,
+.App select,
+.SubmitForm input {
+  padding: 5px;
+  border: 1px solid rgba(62, 118, 42, 0.68);
+  font-size: 15px;
+  border-radius: 3px;
+}
+
+table input {
+  width: calc(100% - 10px);
+  margin-right: 10px;
+}
+
+.TableCellButton button {
+  background: transparent;
+  border: 0;
+  color: rgb(62,118,42);
+  font-size: 16px;
+}
+
+.bigLabel {
+  display: block;
+  margin: 10px 0;
+  width: 100%;
+  font-weight: bold;
+}
+
+.TableHeader th {
+  background: rgb(62,118,42);
+  color: #fff;
+  padding: 10px;
+}
+
+.TableHeader th:first-child {
+  border-radius: 12px 0 0 0;
+}
+
+.TableHeader th:last-child {
+  border-radius: 0 12px 0 0;
+}
+
+.tr:last-child td:first-child {
+  border-radius: 0 0 0 12px;
+}
+
+.tr:last-child td:last-child {
+  border-radius: 0 0 12px 0;
+}
+
+.Directory {
+  line-height: 2;
+  width: 100%;
+  table-layout: fixed;
+  overflow: hidden;
+  background: transparent;
+  border-radius: 12px;
+}
+
+.Directory tr:nth-child(2n+2) td {
+  background: rgb(242,245,215);
+}
+
+.TableCell {
+  padding: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.TableHeader th:first-child,
+.TableCell:first-child {
+  padding-left: 20px;
+}
+
+td.TableCell:nth-child(2) {
+  white-space: pre-wrap;
+  line-height: 1;
+}
+
+.TableCellButton i,
+.TableCell i {
+  font-size: 24px;
+}
+
+.TableCellButton .submitButton,
+.submitButton {
+  border-radius: 4px;
+  padding: 7px 10px;
+  background: rgb(62,118,42);
+  color: #fff;
+}
+
+.TableCellButton .submitButton:hover,
+.submitButton:hover {
+  background: #333;
+}
+
+button {
+  cursor: pointer;
+}
+
+.Directory tr td.addNewLabel {
+  background: #fff;
+  font-weight: bold;
+  padding: 5px 5px 5px 20px;
+  text-decoration: underline;
+}
+
+.tableScroll {
+  max-height: 500px;
+  overflow: auto;
+  box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
+  -o-box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
+  -ms-box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
+  margin-top: 15px;
+  border-radius: 12px;
+}
+
+.tableScroll::-webkit-scrollbar {
+  width: 1em;
+}
+
+.tableScroll::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 3px rgba(0,0,0,0.3);
+}
+
+.tableScroll::-webkit-scrollbar-thumb {
+  background-color: rgb(62,118,42);
+}
+
+.Pagination {
+  text-align: center;
+}
+
+.paginationButton {
+  background: none;
+  border: 1px solid rgb(62,118,42);
+  border-radius: 3px;
+  font-size: 18px;
+  margin: 10px 5px;
+}
+
+.paginationButton:hover,
+.paginationButton.active {
+  background: rgb(62,118,42);
+  color: #fff;
+}
+
+.Directory tr.TableRowEdit td {
+  background: #fff;
+}
+
+.SubmitForm label {
+  width: 100%;
+  margin: 12px 0;
+}
+
+.SubmitForm {
+  text-align: center;
+}
+
+.submitButtonContainer {
+  padding: 12px 0;
+}
+
+.submitButtonContainer .submitButton {
+  font-size: 16px;
+}
+
+.modalText {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+@media screen and (max-width: 1700px) {
+  .TableHeader {
+    font-size: 13px;
+  }
+}
+
+.mobileLabel {
+  width: 100%;
+}
+
+.mobileLabel-inner {
+  display: none;
+}
+
+@media screen and (max-width: 1300px) {
+  table,
+  tr,
+  tbody,
+  td {
+    display: block;
+    text-align: center;
+    line-height: 1;
+  }
+
+  .TableHeader {
+    display: none;
+  }
+
+  .mobileLabel {
+    width: 100%;
+    display: inline-block;
+  }
+  
+  .mobileLabel-inner {
+    display: inline-block;
+    width: 100px;
+  }
+
+  .mobileLabel-inner ~ input {
+    width: calc(100% - 115px);
+    margin-right: 0;
+  }
+}
