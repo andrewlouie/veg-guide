@@ -273,6 +273,7 @@ class Directory extends Component {
                 </div>
               </div>
           </Modal>
+          <div className="note">Note: Currently Restaurants & Cafes are only listed in the printed version if they have vegan options on the menu that are specifically marked as vegan.</div>
         </div>
       );
     } else {

@@ -1,5 +1,6 @@
-const baseURL = 'http://cgkwvegguide.com/';
+//const baseURL = 'https://www.cgkwvegguide.com/';
 //const baseURL = 'http://localhost:8080/edsa-vegguide/';
+const baseURL = '/';
 export const DIRECTORYURL = `${baseURL}listings.php`;
 export const SUBMIT_CHANGE = `${baseURL}submitChange.php`;
 export const UPDATE_LISTING = `${baseURL}updateListing.php`;
